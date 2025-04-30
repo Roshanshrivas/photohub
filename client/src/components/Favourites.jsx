@@ -15,7 +15,7 @@ const Favourites = () => {
         if(!isAuthenticated) return;
 
         try {
-            const res = await axios.get(import.meta.env.VITE_API_URL + "/post/favourites", {
+            const res = await axios.get(import.meta.env.VITE_API_URL + "/api/post/favourites", {
                 headers: {
                     Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
                   },

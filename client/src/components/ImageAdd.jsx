@@ -38,7 +38,7 @@ const ImageAdd = () => {
           if(!public_id || !secure_url) return toast.error("Image Upload Failed");
 
           const res = await axios.post(
-            import.meta.env.VITE_API_URL + "/post/create", 
+            import.meta.env.VITE_API_URL + "/api/post/create", 
             {
               title,
               price,

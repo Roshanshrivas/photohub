@@ -10,7 +10,7 @@ const Orders = () => {
   const role = useSelector((state) => state.auth.role);
 
   const getOrders = async () => {
-    const res = await axios.get(import.meta.env.VITE_API_URL + "/orders/get", {
+    const res = await axios.get(import.meta.env.VITE_API_URL + "/api/orders/get", {
       headers: {
         Authorization: "Bearer " + localStorage.getItem("accessToken"),
       },

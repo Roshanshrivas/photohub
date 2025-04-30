@@ -23,7 +23,7 @@ const PhotoGallery = () => {
     if(!isAuthenticated) return;
 
     try {
-      const res = await axios.get(import.meta.env.VITE_API_URL + "/post/favourites", {
+      const res = await axios.get(import.meta.env.VITE_API_URL + "/api/post/favourites", {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -44,7 +44,7 @@ const PhotoGallery = () => {
       return;
     }
     try {
-      await axios.post(import.meta.env.VITE_API_URL + `/post/addToFavourites/${postId}`,
+      await axios.post(import.meta.env.VITE_API_URL + `/api/post/addToFavourites/${postId}`,
         {},
         {
           headers: {
@@ -67,7 +67,7 @@ const PhotoGallery = () => {
       return;
     }
     try {
-      await axios.delete(import.meta.env.VITE_API_URL + `/post/removeFromFavourites/${postId}`, {
+      await axios.delete(import.meta.env.VITE_API_URL + `/api/post/removeFromFavourites/${postId}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
         },
@@ -83,7 +83,7 @@ const PhotoGallery = () => {
 
   const getAllImages = async () => {
     if (posts.length > 0) return;
-    const res = await axios.get(import.meta.env.VITE_API_URL + "/post/getAll");
+    const res = await axios.get(import.meta.env.VITE_API_URL + "/api/post/getAll");
     const { data } = await res.data;
     dispatch(setAllPosts(data));
   };
@@ -97,7 +97,7 @@ const PhotoGallery = () => {
 
     try {
       const res = await axios.post(
-        import.meta.env.VITE_API_URL + "/payment/generate",
+        import.meta.env.VITE_API_URL + "/api/payment/generate",
         {
           price,
         },
@@ -139,7 +139,7 @@ const PhotoGallery = () => {
       handler: async (response) => {
         try {
           const res = await axios.post(
-            import.meta.env.VITE_API_URL + "/payment/verify",
+            import.meta.env.VITE_API_URL + "/api/payment/verify",
             {
               razorpay_payment_id: response.razorpay_payment_id,
               razorpay_order_id: response.razorpay_order_id,

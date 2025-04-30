@@ -19,7 +19,7 @@ const PhotoManagement = () => {
   const getMyPosts = async () => {
     try {
       if(posts.length > 0) return;
-      const res = await axios.get(import.meta.env.VITE_API_URL + "/post/myPosts", {
+      const res = await axios.get(import.meta.env.VITE_API_URL + "/api/post/myPosts", {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("accessToken"),
         },
